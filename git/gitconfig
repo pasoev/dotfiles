@@ -3,3 +3,8 @@
 	ci = commit
 	co = checkout
 	br = branch
+[credential]
+	helper = store
+[user]
+	name = Sergi Pasoev
+	email = s.pasoev@gmail.com
