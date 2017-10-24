@@ -40,7 +40,9 @@
 	   "
 ]+>")))
        (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
- '(org-agenda-files (quote ("~/org/todo.org")))
+ '(org-agenda-files
+   (quote
+    ("~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
