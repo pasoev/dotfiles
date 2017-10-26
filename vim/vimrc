@@ -1,3 +1,6 @@
+set number
+" set relativenumber
+
 call plug#begin('~/.vim/plugged')
 
 " Syntax and language specific
