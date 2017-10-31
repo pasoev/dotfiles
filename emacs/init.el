@@ -1,3 +1,8 @@
+;; UI settings
+
+(menu-bar-mode -1)
+
+(load-theme 'misterioso)
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -12,12 +17,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+<<<<<<< HEAD
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (tango-dark)))
+=======
+ '(c-basic-offset 4)
+ '(inhibit-startup-buffer-menu nil)
+ '(inhibit-startup-screen t)
+>>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
  '(inhibit-default-init t)
  '(inhibit-startup-screen t)
- '(menu-bar-mode nil)
  '(org-agenda-custom-commands
    (quote
     (("d" todo "DELEGATED" nil)
@@ -66,15 +76,26 @@
  '(remember-handler-functions (quote (org-remember-handler)))
  '(tool-bar-mode nil)
  '(user-emacs-directory-warning nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
-(find-file "~/org/todo.org")
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+	;; This would override `fill-column' if it's an integer.
+	(emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
 
+;; Handy key definition
+(define-key global-map "\M-Q" 'unfill-paragraph)
+
+;; Modes
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode 'turn-on-auto-fill)
+
+(setq c-default-style "linux" c-basic-offset 4)
+;; (setq-default c-basic-offset 4)
+
+(setq c-default-style "linux" c-basic-offset 4)
 ;; Org mode, todo and planning
 (require 'org-install)
 (require 'org-agenda)
@@ -133,13 +154,11 @@
 
 (define-key global-map [(control meta ?r)] 'remember)
 
-
-
-
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
+<<<<<<< HEAD
 
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -157,3 +176,6 @@
    (package-install 'clojure-mode))
 
 
+=======
+(find-file "~/org/todo.org")
+>>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
