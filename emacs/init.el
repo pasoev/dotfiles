@@ -17,15 +17,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-<<<<<<< HEAD
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (tango-dark)))
-=======
  '(c-basic-offset 4)
  '(inhibit-startup-buffer-menu nil)
  '(inhibit-startup-screen t)
->>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
  '(inhibit-default-init t)
  '(inhibit-startup-screen t)
  '(org-agenda-custom-commands
@@ -158,8 +155,6 @@
 (put 'narrow-to-page 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-<<<<<<< HEAD
-
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -175,7 +170,4 @@
 (unless (package-installed-p 'clojure-mode)
    (package-install 'clojure-mode))
 
-
-=======
 (find-file "~/org/todo.org")
->>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
