@@ -17,16 +17,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-<<<<<<< HEAD
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(custom-enabled-themes (quote (tango-dark)))
-=======
  '(c-basic-offset 4)
- '(inhibit-startup-buffer-menu nil)
- '(inhibit-startup-screen t)
->>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
+ '(custom-enabled-themes (quote (tango-dark)))
  '(inhibit-default-init t)
+ '(inhibit-startup-buffer-menu nil)
  '(inhibit-startup-screen t)
  '(org-agenda-custom-commands
    (quote
@@ -55,7 +51,7 @@
        (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-files
    (quote
-    ("~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
+    ("~/projects/gamedev/rogue/darband/doc/hacking.org" "~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -132,7 +128,9 @@
      (define-key org-agenda-keymap "\C-p" 'previous-line)))
 
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/org/refile.org")
+      (quote (("t" "todo" entry (file+headline "~/org/todo.org" "Tasks")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("d" "Darband" entry (file+headline "~/projects/gamedev/rogue/darband/doc/darband.org" "Tasks" )
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
               ("r" "respond" entry (file "~/org/refile.org")
                "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
@@ -158,8 +156,6 @@
 (put 'narrow-to-page 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-<<<<<<< HEAD
-
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -175,7 +171,10 @@
 (unless (package-installed-p 'clojure-mode)
    (package-install 'clojure-mode))
 
-
-=======
 (find-file "~/org/todo.org")
->>>>>>> 35b654e33eeb9cc779988fb1c300c1e62fa8e1a7
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
