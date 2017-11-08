@@ -51,7 +51,7 @@
        (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-files
    (quote
-    ("~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
+    ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -106,12 +106,12 @@
 (define-key mode-specific-map [?a] 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
+(setq org-modules (append org-modules '(org-habit)))
+
 (eval-after-load "org"
   '(progn
      (define-prefix-command 'org-todo-state-map)
-
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
-
      (define-key org-todo-state-map "x"
        #'(lambda nil (interactive) (org-todo "CANCELLED")))
      (define-key org-todo-state-map "d"
@@ -133,6 +133,8 @@
 (setq org-capture-templates
       (quote (("t" "todo" entry (file+headline "~/org/todo.org" "Tasks")
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+	      ("w" "Write" entry (file+headline "~/org/todo.org" "Writing")
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
 	      ("d" "Darband" entry (file+headline "~/projects/gamedev/rogue/darband/doc/darband.org" "Tasks" )
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
               ("r" "respond" entry (file "~/org/refile.org")
@@ -147,10 +149,24 @@
                "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
               ("p" "Phone call" entry (file "~/org/refile.org")
                "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ("h" "Habit" entry (file "~/org/refile.org")
+              ("h" "Habit" entry (file+headline "~/org/todo.org" "Tasks")
                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
 
+(setq org-agenda-custom-commands
+      '(("h" "Daily habits" 
+         ((agenda ""))
+         ((org-agenda-show-log t)
+          (org-agenda-ndays 7)
+          (org-agenda-log-mode-items '(state))
+          (org-agenda-skip-function '(org-agenda-skip-entry-if 'notregexp ":DAILY:"))))
+	("p" "Daily plan" 
+         ((agenda ""))
+         ((org-agenda-show-log t)
+          (org-agenda-ndays 7)
+          (org-agenda-log-mode-items '(state))))))
+
+	
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 (define-key global-map [(control meta ?r)] 'remember)
