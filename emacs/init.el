@@ -19,10 +19,10 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(c-basic-offset 4)
- '(inhibit-startup-buffer-menu nil)
+ '(c-basic-offset 4 t)
  '(custom-enabled-themes (quote (tango-dark)))
  '(inhibit-default-init t)
+ '(inhibit-startup-buffer-menu nil)
  '(inhibit-startup-screen t)
  '(org-agenda-custom-commands
    (quote
@@ -51,7 +51,7 @@
        (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-files
    (quote
-    ("~/projects/gamedev/rogue/darband/doc/hacking.org" "~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
+    ("~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -70,6 +70,9 @@
  '(package-selected-packages (quote (clojure-mode "racket-mode" racket-mode)))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.googlemail.com")
+ '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(user-emacs-directory-warning nil))
 
@@ -185,3 +188,9 @@
 
 ;; Handy key definition
 (define-key global-map "\M-Q" 'unfill-paragraph)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
