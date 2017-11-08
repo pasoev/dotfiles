@@ -132,9 +132,9 @@
 
 (setq org-capture-templates
       (quote (("t" "todo" entry (file+headline "~/org/todo.org" "Tasks")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+               "* TODO %^{Description} \n%?\n - Added %U\n")
 	      ("w" "Write" entry (file+headline "~/org/todo.org" "Writing")
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+               "* TODO %?\n%U\n%a\n")
 	      ("d" "Darband" entry (file+headline "~/projects/gamedev/rogue/darband/doc/darband.org" "Tasks" )
                "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
               ("r" "respond" entry (file "~/org/refile.org")
