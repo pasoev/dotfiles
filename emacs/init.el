@@ -24,31 +24,6 @@
  '(inhibit-default-init t)
  '(inhibit-startup-buffer-menu nil)
  '(inhibit-startup-screen t)
- '(org-agenda-custom-commands
-   (quote
-    (("d" todo "DELEGATED" nil)
-     ("c" todo "DONE|DEFERRED|CANCELLED" nil)
-     ("w" todo "WAITING" nil)
-     ("W" agenda ""
-      ((org-agenda-ndays 21)))
-     ("A" agenda ""
-      ((org-agenda-skip-function
-	(lambda nil
-	  (org-agenda-skip-entry-if
-	   (quote notregexp)
-	   "\\=.*\\[#A\\]")))
-       (org-agenda-ndays 1)
-       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
-     ("u" alltodo ""
-      ((org-agenda-skip-function
-	(lambda nil
-	  (org-agenda-skip-entry-if
-	   (quote scheduled)
-	   (quote deadline)
-	   (quote regexp)
-	   "
-]+>")))
-       (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-files
    (quote
     ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
@@ -57,15 +32,8 @@
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-start-on-weekday nil)
- '(org-deadline-warning-days 14)
- '(org-default-notes-file "~/org/notes.org")
  '(org-fast-tag-selection-single-key (quote expert))
  '(org-remember-store-without-prompt t)
- '(org-remember-templates
-   (quote
-    ((116 "* TODO %?
-  %u" "~/org/todo.org" "Tasks")
-     (110 "* %u %?" "~/org/notes.org" "Notes"))))
  '(org-reverse-note-order t)
  '(package-selected-packages (quote (clojure-mode "racket-mode" racket-mode)))
  '(remember-annotation-functions (quote (org-remember-annotation)))
@@ -75,17 +43,6 @@
  '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(user-emacs-directory-warning nil))
-
-(defun unfill-paragraph (&optional region)
-  "Takes a multi-line paragraph and makes it into a single line of text."
-  (interactive (progn (barf-if-buffer-read-only) '(t)))
-  (let ((fill-column (point-max))
-	;; This would override `fill-column' if it's an integer.
-	(emacs-lisp-docstring-fill-column t))
-    (fill-paragraph nil region)))
-
-;; Handy key definition
-(define-key global-map "\M-Q" 'unfill-paragraph)
 
 ;; Modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -107,6 +64,15 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-modules (append org-modules '(org-habit)))
+(setq org-habit-show-habits-only-for-today nil)
+
+(setq org-log-done 'time)
+;; (setq org-todo-keywords
+;;       '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) ("STARTED" . "yellow")
+	("CANCELED" . (:foreground "blue" :weight bold))))
 
 (eval-after-load "org"
   '(progn
@@ -210,3 +176,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+
+;; Custom functions
+
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+	;; This would override `fill-column' if it's an integer.
+	(emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
+
+;; Handy key definition
+(define-key global-map "\M-Q" 'unfill-paragraph)
+
