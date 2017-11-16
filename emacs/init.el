@@ -26,7 +26,7 @@
  '(inhibit-startup-screen t)
  '(org-agenda-files
    (quote
-    ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/projects/trustforum/trustforum-api/doc/trustforum.org" "~/org/todo.org")))
+    ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/trustforum/doc/trustforum.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -67,8 +67,8 @@
 (setq org-habit-show-habits-only-for-today nil)
 
 (setq org-log-done 'time)
-;; (setq org-todo-keywords
-;;       '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+ (setq org-todo-keywords
+       '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
 
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) ("STARTED" . "yellow")
