@@ -38,6 +38,7 @@
  '(package-selected-packages (quote (clojure-mode "racket-mode" racket-mode)))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler)))
+ '(scroll-bar-mode nil)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.googlemail.com")
  '(smtpmail-smtp-service 587)
