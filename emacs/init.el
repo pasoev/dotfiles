@@ -35,7 +35,9 @@
  '(org-fast-tag-selection-single-key (quote expert))
  '(org-remember-store-without-prompt t)
  '(org-reverse-note-order t)
- '(package-selected-packages (quote (clojure-mode "racket-mode" racket-mode)))
+ '(package-selected-packages
+   (quote
+    (web-mode emmet-mode clojure-mode "racket-mode" racket-mode)))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler)))
  '(scroll-bar-mode nil)
