@@ -26,7 +26,7 @@
  '(inhibit-startup-screen t)
  '(org-agenda-files
    (quote
-    ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/trustforum/doc/trustforum.org" "~/org/todo.org")))
+    ("~/projects/gamedev/rogue/darband/doc/darband.org" "~/org/todo.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -154,10 +154,6 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
-;; clojure
-;; (package-refresh-contents)
-(unless (package-installed-p 'clojure-mode)
-   (package-install 'clojure-mode))
 
 (find-file "~/org/todo.org")
 
