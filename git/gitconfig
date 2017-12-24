@@ -10,3 +10,5 @@
 	email = s.pasoev@gmail.com
 [push]
 	default = simple
+[core]
+	excludesfile = /home/sergi/.gitignore_global
